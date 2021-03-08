@@ -31,12 +31,12 @@ def telco_prep(df):
     df['churn'] = df.churn.replace({'No': 0, 'Yes': 1})
     
     # Dropping unnecessary columns
-    df = df.drop(['customer_id','total_charges'],axis=1)
+    df = df.drop(['total_charges'],axis=1)
     
     # Prepping tenure columns
     # Renaming tenure to tenure_months before creating a tenure_years column
     df = df.rename(columns = {'tenure':'tenure_months'})
-
+    
     # Creating a new feature, tenure in years, by dividing tenure in months by 12
     df['tenure_years'] = round(df.tenure_months / 12, 2)
 
