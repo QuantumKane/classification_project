@@ -16,7 +16,12 @@ def get_telco_data():
     '''
     This function uses the SQL query from below and specifies the database to use
     '''
-    return pd.read_sql(sql_query,get_connection('telco_churn'))    
-    
-# SQL query that joins all of the tables together from the 'telco_churn' database     
-sql_query = "SELECT * FROM customers JOIN payment_types USING (payment_type_id) JOIN contract_types USING (contract_type_id) JOIN internet_service_types USING (internet_service_type_id)"
+    # SQL query that joins all of the tables together from the 'telco_churn' database     
+    sql_query = """
+                SELECT * 
+                FROM customers 
+                JOIN payment_types USING (payment_type_id) 
+                JOIN contract_types USING (contract_type_id) 
+                JOIN internet_service_types USING (internet_service_type_id)
+                """
+    return pd.read_sql(sql_query,get_connection('telco_churn'))
